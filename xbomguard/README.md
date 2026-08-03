@@ -221,13 +221,3 @@ For account creation or onboarding assistance, contact:
 
 - [v.papasavva@cilix.com.cy](mailto:v.papasavva@cilix.com.cy)
 - [y.polykarpou@cilix.com.cy](mailto:y.polykarpou@cilix.com.cy)
-
-## Detailed integration guides
-
-The following documents in this repository provide worked examples for specific producer and consumer integrations:
-
-- [Digital Twin BOM Import Guide](./AENAON_CLX_xBOMGuard_ZELUS_DigitalTwin_BOM_Import_Guide_v1.0.pdf)
-- [Pentesting Prioritised Findings Consumption Guide](./AENAON_CLX_xBOMGuard_ZELUS_Pentesting_Prioritised_Findings_Consumption_Guide_v1.0.pdf)
-- [Risk Assessment Prioritised Exposure API Guide](./AENAON_CLX_xBOMGuard_PRV_RAP_Prioritised_Exposure_API_Guide_v1.0.pdf)
-
-These PDFs use integration-specific accounts and project keys. Treat those values as examples; use the account, permissions, and project key assigned to your own integration.
