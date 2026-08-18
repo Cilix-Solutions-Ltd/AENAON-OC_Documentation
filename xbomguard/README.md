@@ -1,8 +1,8 @@
-# xBOMGuard — Getting Started
+# xBOMGuard — End-user guide
 
 xBOMGuard helps teams upload and analyse CycloneDX Bills of Materials (BOMs), identify vulnerabilities and findings, prioritise risk, and integrate the results with other systems through its public API and webhooks.
 
-This guide explains the typical flow for a new user, from requesting an account to uploading a BOM and consuming its results.
+This guide provides a ready-to-use path for the AENAON Digital Twin and Virtualisation (ZELUS) project, from requesting an account to uploading a BOM and consuming its results.
 
 ## 1. Request an account
 
@@ -13,24 +13,28 @@ xBOMGuard accounts are created on request. Email either of the following contact
 
 In your request, include the email address or addresses that should be registered.
 
-After the accounts have been created, each relevant email address will receive the xBOMGuard link and the credentials needed to sign in. Credentials should be stored securely and must not be shared through public or unencrypted channels.
+After the accounts have been created, each relevant email address will receive the xBOMGuard link and the credentials needed to sign in. xBOMGuard will also provide an API token for communicating through the API calls described in this guide. Use the provided token as the bearer token wherever `<api_token>` appears in the examples.
+
+Credentials and API tokens should be stored securely and must not be shared through public or unencrypted channels.
 
 Sign in at [xbomguard.cilix.com.cy](https://xbomguard.cilix.com.cy).
 
-## 2. Create a project
+## 2. Use the ready-made ZELUS project
 
-After signing in:
+The project has already been created in xBOMGuard. You do not need to create a project or discover its key before uploading a BOM.
 
-1. Open **Projects**.
-2. Select the option to create a new project.
-3. Enter the project's details and save it.
-4. Keep the project's key available; it identifies the project in public API requests.
+| Setting | Value |
+| --- | --- |
+| Project | Digital Twin and Virtualisation (ZELUS) |
+| Project key | `digital-twin-and-virtualisation-zelus` |
+| xBOMGuard host | [xbomguard.cilix.com.cy](https://xbomguard.cilix.com.cy) |
+| Public API base URL | `https://xbomguard.cilix.com.cy/api/v1` |
 
-A project groups the releases, BOMs, components, vulnerabilities, and findings for one product or system.
+After signing in, open **Projects** and select the Digital Twin and Virtualisation (ZELUS) project. Use the project key above exactly as shown in every project-scoped API request.
 
 ## 3. Upload a BOM
 
-Open the project and upload a BOM for the relevant release. xBOMGuard currently supports **CycloneDX JSON through specification version 1.6**.
+Open the ready-made project and upload a BOM for the relevant scenario, image, build, or delivery release. xBOMGuard currently supports **CycloneDX JSON through specification version 1.6**.
 
 For the most useful analysis, include as much of the following CycloneDX data as is available:
 
@@ -54,7 +58,7 @@ curl -X POST "https://xbomguard.cilix.com.cy/api/v1/boms/validate" \
 # Import the file and create or update a release
 curl -X POST "https://xbomguard.cilix.com.cy/api/v1/boms/import" \
   -H "Authorization: Bearer <api_token>" \
-  -F "projectKey=<project_key>" \
+  -F "projectKey=digital-twin-and-virtualisation-zelus" \
   -F "releaseVersion=<release_version>" \
   -F "releaseDate=2026-06-29T12:00:00Z" \
   -F "environment=staging" \
@@ -66,7 +70,7 @@ The import request uses `multipart/form-data` and accepts these fields:
 
 | Field | Required | Description |
 | --- | --- | --- |
-| `projectKey` | Yes | Key of the existing xBOMGuard project. |
+| `projectKey` | Yes | Use the ready-made project key `digital-twin-and-virtualisation-zelus`. |
 | `releaseVersion` | Yes | Release, build, image, scenario, or delivery version; maximum 100 characters. An existing release is resolved using this value. |
 | `bom` | Yes | CycloneDX JSON file. |
 | `releaseDate` | No | Release timestamp in ISO 8601 format. |
@@ -78,9 +82,11 @@ Validation returns HTTP `200` with metadata such as the detected BOM type, forma
 
 The import endpoint creates or resolves a release using `projectKey` and `releaseVersion`; it does not accept a raw release ID. Keep the returned `release.releaseId` exactly as provided for follow-up requests. xBOMGuard IDs exposed by the API are encrypted public tokens and should not be parsed or replaced with internal database IDs.
 
-## 4. Review the results
+## 4. Confirm processing and review the results
 
-After the BOM has been processed, use the dashboard or public API to review the release. Common API operations include:
+Import returns HTTP `202` because processing is asynchronous. Copy `release.releaseId` from the response, store it exactly as returned, and use it in the release endpoints below. First call the release-details endpoint until its status shows that processing has completed; then request the result sets needed by your integration.
+
+### Endpoints to use after import
 
 | Purpose | Endpoint |
 | --- | --- |
@@ -96,7 +102,23 @@ After the BOM has been processed, use the dashboard or public API to review the 
 | List prioritised findings for a project | `GET /api/v1/projects/{projectKey}/prioritised-findings` |
 | Get the release prioritisation summary | `GET /api/v1/releases/{releaseId}/prioritisation` |
 
-Example:
+Use the project endpoint when you do not yet have a release ID:
+
+```bash
+curl -X GET \
+  "https://xbomguard.cilix.com.cy/api/v1/projects/digital-twin-and-virtualisation-zelus/releases?page=1" \
+  -H "Authorization: Bearer <api_token>"
+```
+
+To confirm processing for an imported release:
+
+```bash
+curl -X GET \
+  "https://xbomguard.cilix.com.cy/api/v1/releases/<release_id>" \
+  -H "Authorization: Bearer <api_token>"
+```
+
+To retrieve its vulnerabilities:
 
 ```bash
 curl -X GET \
@@ -124,7 +146,7 @@ curl -X GET \
 
 # Prioritised findings from the latest project release
 curl -X GET \
-  "https://xbomguard.cilix.com.cy/api/v1/projects/<project_key>/prioritised-findings?isLatest=true&page=1" \
+  "https://xbomguard.cilix.com.cy/api/v1/projects/digital-twin-and-virtualisation-zelus/prioritised-findings?isLatest=true&page=1" \
   -H "Authorization: Bearer <api_token>"
 ```
 
@@ -150,38 +172,12 @@ The supplied integration guides distinguish between two common account workflows
 - **BOM producers** validate and import CycloneDX files, then monitor the created release and consume its results.
 - **Read-only consumers**, such as risk-assessment or pentesting integrations, discover existing releases and read prioritised findings, components, vulnerabilities, evidence, and graph context. They should not upload BOMs unless their assigned integration role explicitly permits it.
 
-## Public API access
-
-The public API uses bearer-token authentication.
-
-1. Sign in to xBOMGuard.
-2. Open [Settings → Security](https://xbomguard.cilix.com.cy/settings/security).
-3. Create a new API token and select the required duration.
-4. Copy the token immediately and store it in a secure secret manager.
-
-> **Important:** The API token is shown only when it is created. It cannot be retrieved later. If it is lost, create a replacement token.
-
-Send the token with every API request:
-
-```http
-Authorization: Bearer <api_token>
-```
-
-Do not place passwords or API tokens in URLs, query strings, source control, file names, or logs. Rotate or revoke tokens that are no longer required.
-
-API resources:
-
-- Base URL: `https://xbomguard.cilix.com.cy/api/v1`
-- Interactive OpenAPI/Swagger documentation: [xbomguard.cilix.com.cy/api/v1/docs](https://xbomguard.cilix.com.cy/api/v1/docs)
-
-The Swagger documentation is the authoritative reference for request fields, optional filters, response schemas, and the complete set of currently available endpoints.
-
-### Common API errors
+## Common API errors
 
 | Status | Meaning | Recommended action |
 | --- | --- | --- |
 | `400` | Invalid request, unsupported BOM, invalid encrypted ID, or unsupported filter. | Correct the request fields, file, identifier, or query parameter and retry. |
-| `401` | Missing, expired, or invalid bearer token. | Check the `Authorization` header or generate a replacement token. |
+| `401` | Missing, expired, or invalid bearer token. | Check the `Authorization` header or request a replacement token from xBOMGuard. |
 | `404` | The requested project, release, BOM, finding, component, or graph object does not exist or is not visible to the token. | Confirm the project key, encrypted identifier, release status, and account permissions. |
 
 ## Webhooks
@@ -204,7 +200,7 @@ Request account
       ↓
 Receive login details and sign in
       ↓
-Create a project
+Open the ready-made Digital Twin and Virtualisation (ZELUS) project
       ↓
 Upload a CycloneDX JSON BOM (up to version 1.6)
       ↓
@@ -214,6 +210,12 @@ Review components, vulnerabilities, findings, and prioritised findings
       ↓
 Use the public API and/or webhooks for automation
 ```
+
+## Useful links and integration guides
+
+- [xBOMGuard sign-in and dashboard](https://xbomguard.cilix.com.cy)
+- [Interactive OpenAPI/Swagger documentation](https://xbomguard.cilix.com.cy/api/v1/docs)
+- [xBOMGuard User Knowledge Documentation](https://learn-xbomguard.cilix.com.cy)
 
 ## Support
 
