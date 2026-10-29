@@ -10,7 +10,7 @@
 
 A proprietary service supporting monitoring, threat detection, investigation and incident-oriented analysis using network/endpoint activity and relevant security context. It supports alert prioritisation, investigation, attack-surface review and assessment of security controls.
 
-Technical baseline: AENAON Open Call #1 Technical Annex, version 1.0, released 7 August 2026, as supplied for this catalogue.
+Technical reference: *AENAON Open Call #1 Technical Annex*, v1.0 (7 August 2026).
 
 ## 2. Potential Open Call use
 
@@ -35,7 +35,7 @@ Controlled project-scoped workspace access is described. The provider confirms h
 
 ## 7. Documentation and resources
 
-PRIVACT supplies applicable manuals, access details and any authorised technical resources through onboarding. No detailed manual, download URL or provider endpoint has been supplied for this profile. Request the relevant instructions through the provider/project route below; do not substitute unverified installation commands or links.
+The responsible provider (PRIVACT) supplies approved manuals, access instructions and technical resources where applicable to the authorised activity. Request current resources through the provider/project contact route below.
 
 ## 8. Limitations and authorised use
 
