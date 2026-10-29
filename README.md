@@ -37,7 +37,7 @@ Beneficiaries may use one or several tools according to their approved use case.
 
 See the [detailed catalogue](docs/TOOL_CATALOGUE.md), [access and use guidance](docs/ACCESS_AND_USE.md), [integration overview](docs/INTEGRATION_OVERVIEW.md) and [FAQ](docs/FAQ.md). Tool owners maintain their technical material; CILIX maintains common documentation and gives final approval before merging updates. Beneficiaries receive read-only access to approved contents. See [contribution instructions](CONTRIBUTING.md) and the [administrator guide](docs/REPOSITORY_ADMINISTRATION.md) for the intended governance and recommended settings.
 
-The initial technical baseline is the **AENAON Open Call #1 Technical Annex, version 1.0, released 7 August 2026**, as supplied for this catalogue. Tool-specific instructions remain subject to provider confirmation for the approved project; the existing ZELUS xBOMGuard guide is identified separately in its profile.
+The initial technical baseline is the **AENAON Open Call #1 Technical Annex, version 1.0, released 7 August 2026**, as supplied for this catalogue. Tool-specific instructions remain subject to provider confirmation for the approved project; the consolidated xBOMGuard page includes both beneficiary onboarding and optional authorised API guidance.
 
 For project onboarding and routing to the responsible provider, contact [info@aenaon-project.eu](mailto:info@aenaon-project.eu).
 
