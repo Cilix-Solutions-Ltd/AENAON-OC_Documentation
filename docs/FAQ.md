@@ -36,7 +36,7 @@ The Digital Twin describes Docker-based on-premises or private-cloud deployment 
 
 ## Where can I find additional documentation?
 
-Follow approved resources on the tool profile or request the relevant manuals through the provider's onboarding route. The existing [ZELUS xBOMGuard integration guide](../tools/xbomguard/ZELUS_INTEGRATION_GUIDE.md) applies only to its stated project and authorised roles.
+Follow approved resources on each tool's profile or request the relevant manuals through the provider's onboarding route. The [xBOMGuard guide](../tools/xbomguard/README.md) contains browser onboarding and optional authorised API workflows.
 
 ## Who maintains each tool's information?
 
