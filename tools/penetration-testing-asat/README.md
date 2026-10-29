@@ -10,7 +10,7 @@
 
 The Automated Security Assessment Toolkit (ASAT) orchestrates network and web security assessments through a common REST API. It integrates Nmap, Nikto, ADEnum, Kerbrute and FFuF, executes assessments in isolated Docker containers and correlates results using Neo4j.
 
-Technical baseline: AENAON Open Call #1 Technical Annex, version 1.0, released 7 August 2026, as supplied for this catalogue.
+Technical reference: *AENAON Open Call #1 Technical Annex*, v1.0 (7 August 2026).
 
 ## 2. Potential Open Call use
 
@@ -18,7 +18,7 @@ Perform explicitly authorised vulnerability assessments, asset and service disco
 
 ## 3. Access and deployment
 
-The described deployment is a Docker application stack with a web dashboard and REST API. Agree the permitted environment and access arrangements with ZELUS. The baseline does not supply public images, package downloads or installation commands.
+The described deployment is a Docker application stack with a web dashboard and REST API. Agree the permitted environment and access arrangements with ZELUS. Container images, installation packages and deployment instructions are available only where authorised and provided by ZELUS.
 
 ## 4. Getting started
 
@@ -35,7 +35,7 @@ A common REST API and web dashboard coordinate the Docker-based assessment stack
 
 ## 7. Documentation and resources
 
-ZELUS supplies applicable manuals, access details and any authorised technical resources through onboarding. No detailed manual, download URL or provider endpoint has been supplied for this profile. Request the relevant instructions through the provider/project route below; do not substitute unverified installation commands or links.
+The responsible provider (ZELUS) supplies approved manuals, access instructions and technical resources where applicable to the authorised activity. Request current resources through the provider/project contact route below.
 
 ## 8. Limitations and authorised use
 
