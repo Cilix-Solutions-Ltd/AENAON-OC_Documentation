@@ -10,7 +10,7 @@
 
 A distributed simulation and digital twin environment for offshore wind farms. It uses OPC UA and TCP fieldbus communication to represent turbine operations, electrical infrastructure and environmental conditions.
 
-Technical baseline: AENAON Open Call #1 Technical Annex, version 1.0, released 7 August 2026, as supplied for this catalogue.
+Technical reference: *AENAON Open Call #1 Technical Annex*, v1.0 (7 August 2026).
 
 ## 2. Potential Open Call use
 
@@ -22,7 +22,7 @@ The service is described as Docker-based and may be hosted on-premises or in a p
 
 ## 4. Getting started
 
-Agree the simulation objective and permitted infrastructure representation with ZELUS. Prepare relevant turbine parameters, ICS configurations and approved measurements. Confirm the host prerequisites, resource requirements, supplied images or environment, dashboard access and applicable interface instructions with ZELUS before deployment; no verified installation commands have been supplied for this catalogue.
+Agree the simulation objective and permitted infrastructure representation with ZELUS. Prepare relevant turbine parameters, ICS configurations and approved measurements. Confirm host prerequisites, resource requirements, approved deployment resources or hosted environment, dashboard access and applicable interface instructions with ZELUS before deployment.
 
 ## 5. Inputs and outputs
 
@@ -35,7 +35,7 @@ Known interfaces include web dashboards, OPC UA and REST APIs, alongside TCP fie
 
 ## 7. Documentation and resources
 
-ZELUS supplies applicable manuals, access details and any authorised technical resources through onboarding. No detailed manual, download URL or provider endpoint has been supplied for this profile. Request the relevant instructions through the provider/project route below; do not substitute unverified installation commands or links.
+The responsible provider (ZELUS) supplies approved manuals, access instructions and technical resources where applicable to the authorised activity. Request current resources through the provider/project contact route below.
 
 ## 8. Limitations and authorised use
 
