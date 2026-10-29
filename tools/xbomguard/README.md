@@ -43,7 +43,7 @@ Contact your assigned AENAON onboarding contact or [info@aenaon-project.eu](mail
 
 **Service:** [xBOMGuard sign-in](https://xbomguard.cilix.com.cy) (access subject to provisioning).
 
-**Preferred input:** CycloneDX JSON. The previously documented xBOMGuard import workflow supports **CycloneDX JSON through specification version 1.6**; CILIX must confirm the currently deployed version and any applicable format limits before use. The OC Technical Annex also identifies SPDX JSON, structured component inventories, SARIF findings, purl/CPE identifiers, and optional lifecycle, criticality or VEX/OpenVEX evidence as possible inputs **where supported by the authorised workflow**. This does not mean the CycloneDX upload endpoint accepts all those formats.
+**Preferred input:** CycloneDX JSON. The documented xBOMGuard import workflow supports **CycloneDX JSON through specification version 1.6**; CILIX must confirm the currently deployed version and any applicable format limits before use. The OC Technical Annex also identifies SPDX JSON, structured component inventories, SARIF findings, purl/CPE identifiers, and optional lifecycle, criticality or VEX/OpenVEX evidence as possible inputs **where supported by the authorised workflow**. This does not mean the CycloneDX upload endpoint accepts all those formats.
 
 A useful CycloneDX BOM should include, where available:
 
@@ -71,9 +71,9 @@ Results may include component and dependency inventories, enriched vulnerability
 
 ## 5. Optional API workflow and examples
 
-**Use this section only after CILIX has authorised Mode B and confirmed the API version, permissions and endpoints for your assigned environment.** The paths and request fields below are retained from the existing technical guide; they have **not been independently tested against the live deployment for this OC documentation update**. The current [OpenAPI/Swagger documentation](https://xbomguard.cilix.com.cy/api/v1/docs) is the operational reference for authorised API users.
+**Use this section only after CILIX has authorised Mode B and confirmed the API version, permissions and endpoints for your assigned environment.** The examples describe documented interface behaviour; confirm endpoint availability, request formats and access permissions against the deployed service before use. The current [OpenAPI/Swagger documentation](https://xbomguard.cilix.com.cy/api/v1/docs) is the operational reference for authorised API users.
 
-The existing guide identifies the API base URL as `https://xbomguard.cilix.com.cy/api/v1`. In these examples, substitute **your assigned project key**, token and actual release details; never copy an identifier from another beneficiary's or consortium project's integration.
+The documented API base URL is `https://xbomguard.cilix.com.cy/api/v1`. In these examples, substitute **your assigned project key**, token and actual release details; never copy an identifier from another beneficiary's or consortium project's integration.
 
 ### 5.1 Validate and import a CycloneDX BOM
 
@@ -106,11 +106,11 @@ Documented import fields:
 | `customEnvironment` | Optional | Custom environment label where applicable. |
 | `isLatest` | Optional | Mark the release as latest when appropriate. |
 
-The existing technical guide reports HTTP `200` for validation and `202` for import, because subsequent processing is asynchronous. Import creates or resolves a release by project key and release version. Preserve the returned `release.releaseId` exactly: exposed IDs are opaque/encrypted public tokens, **not internal database identifiers**.
+The documented API indicates HTTP `200` for validation and `202` for import, because subsequent processing is asynchronous. Import creates or resolves a release by project key and release version. Preserve the returned `release.releaseId` exactly: exposed IDs are opaque/encrypted public tokens, **not internal database identifiers**.
 
 ### 5.2 Monitor processing and retrieve findings
 
-The following paths are documented in the earlier integration guide. Availability and filters depend on the assigned role and current API contract.
+The following paths describe the documented integration interface. Availability and filters depend on the assigned role and current API contract.
 
 | Purpose | Documented endpoint |
 | --- | --- |
@@ -149,7 +149,7 @@ For a consuming integration, the usual flow is: discover permitted releases; ret
 
 Documented prioritisation results may include affected component references, CVE/advisory identifiers, priority score and band, reason codes, KEV context, VEX/applicability state, lifecycle context, and accepted-risk or suppression status, where evidence exists.
 
-The previous API guide lists possible release-scoped filters including `status`, `priorityBand`, `minPriorityScore`, `vulnerabilityId`, `componentVersionId`, `supplierId`, `kev`, `vexStatus`, `includeAcceptedRisk`, `includeSuppressed`, `sort`, and `page`. Project-scoped requests may additionally support `releaseLifecycle` and `isLatest`. Confirm accepted values and filter availability in the current API documentation.
+Release-scoped filters may include `status`, `priorityBand`, `minPriorityScore`, `vulnerabilityId`, `componentVersionId`, `supplierId`, `kev`, `vexStatus`, `includeAcceptedRisk`, `includeSuppressed`, `sort`, and `page`. Project-scoped requests may additionally support `releaseLifecycle` and `isLatest`. Confirm accepted values and filter availability in the current API documentation.
 
 ```bash
 curl -X GET \
@@ -159,7 +159,7 @@ curl -X GET \
 
 ### 5.4 Optional dependency and blast-radius context
 
-The previous guide documents these optional public graph routes:
+Optional dependency and blast-radius routes are documented below; confirm current availability and permissions:
 
 | Purpose | Documented endpoint |
 | --- | --- |
@@ -172,7 +172,7 @@ Such outputs describe **dependency context**. They are not proof that an attack 
 
 ### 5.5 Optional webhook notifications
 
-The existing guide describes webhooks for events such as **new vulnerability**, **new finding**, **BOM processed**, and **BOM failed**. Webhooks are not a default OC entitlement; availability, subscribed events, destination registration and request-authentication mechanisms must be confirmed by CILIX.
+Webhook notifications may be available for events such as **new vulnerability**, **new finding**, **BOM processed**, and **BOM failed**. Webhooks are not a default OC entitlement; availability, subscribed events, destination registration and request-authentication mechanisms must be confirmed by CILIX.
 
 If authorised, use HTTPS endpoints, validate notification authenticity using supported security mechanisms, acknowledge deliveries promptly, and handle duplicate deliveries safely. Never put tokens or secrets in webhook URLs. An integration can instead poll the permitted release-status endpoint if webhooks are not enabled.
 
@@ -184,11 +184,11 @@ If authorised, use HTTPS endpoints, validate notification authenticity using sup
 | `401` | Missing, expired or invalid bearer token: verify the secure token provisioning and authorisation. |
 | `404` | Object unavailable, not found or outside the token's visibility: verify the assigned project and opaque identifier, without attempting to access another workspace. |
 
-This table reflects the existing guide and is not an exhaustive error contract. Follow the current API specification and onboarding support instructions for other responses.
+This table summarises common errors and is not an exhaustive API error contract. Follow the current API specification and onboarding support instructions for other responses.
 
 ## 6. Sharing results with other AENAON tools
 
-xBOMGuard results may support authorised vulnerability-assessment and risk-assessment activities. For example, relevant component exposure and dependency information may be provided to the ZELUS assessment tooling or PRIVACT Risk Assessment Platform **if the providers agree the data, formats, credentials and respective responsibilities**. There is no implication of a live integration or automatic synchronisation for every OC beneficiary. The existing consortium Digital Twin integration used a specific project-scoped producer/consumer workflow; its identifiers and permissions are **not reusable** for other OC activities.
+xBOMGuard results may support authorised vulnerability-assessment and risk-assessment activities. For example, relevant component exposure and dependency information may be provided to the ZELUS assessment tooling or PRIVACT Risk Assessment Platform **if the providers agree the data, formats, credentials and respective responsibilities**. There is no implication of a live integration or automatic synchronisation for every OC beneficiary. Project-specific identifiers and permissions must **not be reused** for unrelated OC activities.
 
 ## 7. Security, licence and technical boundaries
 
