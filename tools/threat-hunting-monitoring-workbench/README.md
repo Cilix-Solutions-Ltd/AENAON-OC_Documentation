@@ -10,7 +10,7 @@
 
 A proprietary hosted prototype for preparing and documenting hypothesis-driven security hunts. It transforms asset, exposure, vulnerability, risk and CTI/TTP information into structured investigation objectives, Kestrel-compatible huntbooks and reusable hunt packs.
 
-Technical baseline: AENAON Open Call #1 Technical Annex, version 1.0, released 7 August 2026, as supplied for this catalogue.
+Technical reference: *AENAON Open Call #1 Technical Annex*, v1.0 (7 August 2026).
 
 ## 2. Potential Open Call use
 
@@ -35,7 +35,7 @@ Managed browser access is described. Exported hunt packs may be executed using a
 
 ## 7. Documentation and resources
 
-CILIX supplies applicable manuals, access details and any authorised technical resources through onboarding. No detailed manual, download URL or provider endpoint has been supplied for this profile. Request the relevant instructions through the provider/project route below; do not substitute unverified installation commands or links.
+The responsible provider (CILIX) supplies approved manuals, access instructions and technical resources where applicable to the authorised activity. Request current resources through the provider/project contact route below.
 
 ## 8. Limitations and authorised use
 
