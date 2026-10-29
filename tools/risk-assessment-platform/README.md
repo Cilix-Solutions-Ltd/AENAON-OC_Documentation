@@ -10,7 +10,7 @@
 
 A proprietary platform for threat and risk assessment of offshore-wind digital infrastructures. It uses vulnerability information, threat intelligence, asset relationships and knowledge-graph risk models to examine individual and cascading risks, dependencies, potential consequences and mitigation strategies.
 
-Technical baseline: AENAON Open Call #1 Technical Annex, version 1.0, released 7 August 2026, as supplied for this catalogue.
+Technical reference: *AENAON Open Call #1 Technical Annex*, v1.0 (7 August 2026).
 
 ## 2. Potential Open Call use
 
@@ -35,7 +35,7 @@ Project-scoped service access and scoped REST API access where agreed. Potential
 
 ## 7. Documentation and resources
 
-PRIVACT supplies applicable manuals, access details and any authorised technical resources through onboarding. No detailed manual, download URL or provider endpoint has been supplied for this profile. Request the relevant instructions through the provider/project route below; do not substitute unverified installation commands or links.
+The responsible provider (PRIVACT) supplies approved manuals, access instructions and technical resources where applicable to the authorised activity. Request current resources through the provider/project contact route below.
 
 ## 8. Limitations and authorised use
 
