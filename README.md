@@ -1,4 +1,4 @@
-# AENAON Open Call – Tool Catalogue & Technical Documentation
+# AENAON  Open Call – Tool Catalogue & Technical Documentation
 
 AENAON brings together cybersecurity preparedness services for offshore wind farms. This catalogue helps selected Open Call beneficiaries identify tools for their approved activities and find the information needed to access, configure, integrate and use them.
 
