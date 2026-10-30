@@ -25,13 +25,13 @@ Beneficiaries may use one or several tools according to their approved use case.
 ### Threat & Risk Assessment Services
 
 - [Risk Assessment Platform](tools/risk-assessment-platform/README.md) — PRIVACT
-- [Cyber Threat Intelligence Platform (CTIP)](tools/cyber-threat-intelligence-platform/README.md) — ENDOSCOPE (ENDO)
+- [Cyber Threat Intelligence Platform (CTIP)](tools/cyber-threat-intelligence-platform/README.md) — ENDOSCOPE
 
 ### Risk/Threat Monitoring & Cyberattack Management Services
 
 - [Threat Hunting & Monitoring — CILIX Workbench](tools/threat-hunting-monitoring-workbench/README.md) — CILIX
 - [Threat Detection & Incident Response Platform](tools/threat-detection-incident-response-platform/README.md) — PRIVACT
-- [Strategic Cyber Threat Intelligence Platform (SCTIP)](tools/strategic-cyber-threat-intelligence-platform/README.md) — ENDOSCOPE (ENDO)
+- [Strategic Cyber Threat Intelligence Platform (SCTIP)](tools/strategic-cyber-threat-intelligence-platform/README.md) — ENDOSCOPE
 
 ## Using this documentation
 
